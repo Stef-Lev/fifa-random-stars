@@ -6,13 +6,14 @@ getStarsBtn.addEventListener("click", getRandomStarRating);
 refreshBtn.addEventListener("click", refreshAll);
 
 function getRandomStarRating() {
-  getStarsBtn.disabled = true;
+  getStarsBtn.style.display = "none";
   const randomInputValue = Math.floor(Math.random() * 10) + 1;
   const inputElement = document.querySelector(
     `input[value="${randomInputValue}"]`
   );
   inputElement.checked = true;
   msg.innerHTML = `${randomInputValue / 2} stars tournament. Good Luck!`;
+  refreshBtn.style.display = "block";
 }
 
 function refreshAll() {
@@ -23,8 +24,7 @@ function refreshAll() {
     button.checked = false;
   });
 
-  document.getElementById("stars-overlay").style.display = "none";
-
   const getStarsBtn = document.getElementById("get-stars-btn");
-  getStarsBtn.disabled = false;
+  refreshBtn.style.display = "none";
+  getStarsBtn.style.display = "block";
 }
